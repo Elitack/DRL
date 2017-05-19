@@ -10,7 +10,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from Agent_v2 import Agent2
-from Autoencoder import Autoencoder 
+#from Autoencoder import Autoencoder
 #import argparse
 #import sys
 
@@ -108,6 +108,7 @@ class lmmodel(Agent2):
             )
 
 
+
             #construct a lstmcell ,the size is neuronNum
             lstmcell = tf.contrib.rnn.BasicLSTMCell(self.neuronNum, forget_bias=1.0, state_is_tuple=True)
             cell_drop=tf.contrib.rnn.DropoutWrapper(lstmcell, output_keep_prob=0.5)
@@ -148,8 +149,9 @@ class lmmodel(Agent2):
             #    for i in range(2):
             #        (outputs,states)=cell(nowinput[:,i,:],state)
             #        tf.get_variable_scope().reuse_variables()
-            nowinput = tf.reshape(L1,[-1,4,128])
-            outputnew,statenew = tf.nn.dynamic_rnn(cell,nowinput,dtype=tf.float32)
+            nowinput = tf.reshape(L1, [-1, 4, 128])
+
+            outputnew, statenew = tf.nn.dynamic_rnn(cell, nowinput, dtype=tf.float32)
 
             #outputs = outputnew[:,1,:]
             outputs = tf.reshape(outputnew,[-1,self.neuronNum])
@@ -317,7 +319,7 @@ class lmmodel(Agent2):
 
     def learn(self):
         self.merged = tf.summary.merge_all()
-        self.writer = tf.summary.FileWriter("/home/swy/code/DRL/tbencoder", self.sess.graph) 
+        self.writer = tf.summary.FileWriter("/home/jack/Documents/Project/DRL/tbencoder", self.sess.graph)
         #trajectories = self.get_trajectories()
         #i=0
         #for trajectory in trajectories:
@@ -447,9 +449,9 @@ def get_config():
 
 
 def main():
-    os.chdir("/home/swy/code/DRL/autoencoder_models/data")
+    os.chdir("/home/jack/Documents/Project/DRL/data")
     L=[]
-    for files in os.walk("/home/swy/code/DRL/autoencoder_models/data"):
+    for files in os.walk("/home/jack/Documents/Project/DRL/data"):
         for file in files:
             L.append(file) 
     #autoencoder pretrain w1, b1
@@ -480,24 +482,24 @@ def main():
 
 
 
-    if tf.gfile.Exists('/home/swy/code/DRL/tbencoder'):
-        tf.gfile.DeleteRecursively('/home/swy/code/DRL/tbencoder')
-    tf.gfile.MakeDirs('/home/swy/code/DRL/tbencoder')
+    if tf.gfile.Exists('/home/jack/Documents/Project/DRL/tbencoder'):
+        tf.gfile.DeleteRecursively('/home/jack/Documents/Project/DRL/tbencoder')
+    tf.gfile.MakeDirs('/home/jack/Documents/Project/DRL/tbencoder')
 
     config=get_config()
     sess= tf.InteractiveSession()
-    trainable=False
+    trainable=True
     if trainable:
         #out = lmmodel(config=config,sess=sess,W1=w,B1=b,FileList=L)
         out = lmmodel(config=config,sess=sess,FileList=L)
         sess.run(tf.global_variables_initializer())
         out.learn()
         saver = tf.train.Saver(tf.global_variables())
-        save_path = out.saver.save(sess, '/home/swy/code/DRL/cpencoder/model.ckpt')
+        save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model.ckpt')
     else:
         #out = lmmodel(config=config,sess=sess,W1=w,B1=b,FileList=L)
         out = lmmodel(config=config,sess=sess,FileList=L)
-        load_path = out.saver.restore(sess,'/home/swy/code/DRL/cpencoder/model.ckpt')
+        load_path = out.saver.restore(sess,'/home/jack/Documents/Project/DRL/cpencoder/model.ckpt')
         out.learn()
             #out=sess.run(out.train_step,feed_dict=feed_dict())
 

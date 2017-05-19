@@ -1,3 +1,0 @@
-close
-mfd_buyamt_d2
-close
