@@ -23,28 +23,21 @@ for stock in stockList:
         #    f.write(str(time.year)+','+str(time.month)+','+str(time.day)+','+str(time.hour))
         #    f.write(','+str(time.minute)+','+str(row.value)+'\n')
 
-for stock in stockList:
-    plt.figure()
-    x_values = range(len(data[stock]["close"]))
-    y_values = data[stock]["close"]
-    plt.plot(x_values, y_values)
-    plt.savefig(stock+'.png')
 
-#print 'parsing begin'
-#for stock in stockList:
- #   f = open(stock+'.csv', "a+")
-  #  for factor in factorList:
-  #      for index in range(len(data[stock][factor])):
-  #          f.write(str(index))
-   #         for factorSecond in factorList:
-   #             f.write(',' + str(data[stock][factorSecond][index]))
-   #         f.write('\n')
- #   print stock + ' parsing done'
-  #  f.close()
+print 'parsing begin'
+for stock in stockList:
+   f = open(stock+'.csv', "a+")
+   for index in range(len(data[stock]['open'])):
+       f.write(str(index))
+       for factorSecond in factorList:
+           f.write(',' + str(data[stock][factorSecond][index]))
+       f.write('\n')
+   print stock + ' parsing done'
+   f.close()
 
 
 # close connection with cassandra
-#cluster.shutdown()
+cluster.shutdown()
 
 
 
