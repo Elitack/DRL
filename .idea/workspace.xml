@@ -2,41 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b406a15-251b-4596-8c55-de5894a0002b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AutoEncoder/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AutoEncoder/autoencoder.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1601.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1602.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1603.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1604.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1605.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1606.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1607.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1608.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1609.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1610.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1611.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1612.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1701.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1702.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/data/IF1703.CFE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1601.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1602.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1603.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1604.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1605.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1606.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1607.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1608.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1609.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1610.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1611.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1612.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1701.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1702.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Info/pic/IF1703.CFE.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/demo.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DRLAE_v1.py" afterPath="$PROJECT_DIR$/DRLAE_v1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AutoEncoder/autoencoder.py" afterPath="$PROJECT_DIR$/AutoEncoder/autoencoder.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,7 +17,7 @@
     <SUITE FILE_PATH="coverage/DRL$test.coverage" NAME="test Coverage Results" MODIFIED="1493357686433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
     <SUITE FILE_PATH="coverage/DRL$lmRL_v1.coverage" NAME="lmRL_v1 Coverage Results" MODIFIED="1493366558413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$test4_lmRL_3.coverage" NAME="test4_lmRL_3 Coverage Results" MODIFIED="1493177797851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DRL$autoencoder.coverage" NAME="autoencoder Coverage Results" MODIFIED="1495616003218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AutoEncoder" />
+    <SUITE FILE_PATH="coverage/DRL$autoencoder.coverage" NAME="autoencoder Coverage Results" MODIFIED="1495629343462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AutoEncoder" />
     <SUITE FILE_PATH="coverage/DRL$lmRL_51.coverage" NAME="lmRL_51 Coverage Results" MODIFIED="1493707123797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$DRLAE.coverage" NAME="DRLAE Coverage Results" MODIFIED="1495093325486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -63,7 +30,7 @@
       <file leaf-file-name="Agent_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Agent_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="1206">
               <caret line="67" column="63" lean-forward="false" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
               <folding />
             </state>
@@ -73,8 +40,8 @@
       <file leaf-file-name="DRLAE_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DRLAE_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="301" column="0" lean-forward="true" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="261" column="35" lean-forward="false" selection-start-line="261" selection-start-column="35" selection-end-line="261" selection-end-column="35" />
               <folding>
                 <element signature="e#139#177#0" expanded="true" />
               </folding>
@@ -85,8 +52,8 @@
       <file leaf-file-name="autoencoder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AutoEncoder/autoencoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="1638">
+              <caret line="90" column="36" lean-forward="false" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -224,7 +191,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -264,6 +230,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -632,16 +599,15 @@
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19353099" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24057084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19353099" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24057084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -649,8 +615,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,6 +633,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Agent_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1206">
+          <caret line="67" column="63" lean-forward="false" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DRLAE_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#139#177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AutoEncoder/autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="23" column="63" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Agent_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1206">
@@ -822,26 +817,26 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DRLAE.py" />
-    <entry file="file://$PROJECT_DIR$/AutoEncoder/aaa">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/AutoEncoder/aaa" />
     <entry file="file://$PROJECT_DIR$/Agent_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="1206">
           <caret line="67" column="63" lean-forward="false" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="766" column="0" lean-forward="false" selection-start-line="766" selection-start-column="0" selection-end-line="766" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DRLAE_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="301" column="0" lean-forward="true" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="261" column="35" lean-forward="false" selection-start-line="261" selection-start-column="35" selection-end-line="261" selection-end-column="35" />
           <folding>
             <element signature="e#139#177#0" expanded="true" />
           </folding>
@@ -850,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoEncoder/autoencoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="1638">
+          <caret line="90" column="36" lean-forward="false" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
