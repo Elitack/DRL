@@ -29,7 +29,14 @@ class AutoEncoder(object):
             self.learning_rate = config['learning_rate']
         else:
             self.learning_rate = 0.01
-
+        if 'epoch' in config.keys():
+            self.epoch = config['epoch']
+        else:
+            self.epoch = 5
+        if 'batchSize' in config.keys():
+            self.batchSize = config['batchSize']
+        else:
+            self.batchSize = 150
 
         #dynamic static variable initial
 
@@ -38,8 +45,6 @@ class AutoEncoder(object):
 
 
     def learn(self):
-        weights_dict = {}
-        biases_dict = {}
         for i in range(self.layerNum):
             (self.weights_dict['weights' + str(i + 1)], self.biases_dict['biases'+str(i+1)], self.trainData) = self.learnDetail(self.hiddenSize[i], self.hiddenSize[i+1], self.trainData)
 
@@ -67,14 +72,12 @@ class AutoEncoder(object):
 
 
         #----------------------training network-------------------------------
-        epochs = 5
-        batchSize = 150
 
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
-            for epoch in range(epochs):
-                ranInt = random.randint(0, len(trainData)-batchSize)
-                epochData = trainData[ranInt:ranInt+batchSize]
+            for epoch in range(self.epoch):
+                ranInt = random.randint(0, len(trainData)-self.batchSize)
+                epochData = trainData[ranInt:ranInt+self.batchSize]
                 [_] = sess.run([training_op], feed_dict={X:epochData})
 
             weights1 = weights1.eval()
