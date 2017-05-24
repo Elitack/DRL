@@ -16,7 +16,7 @@ test = AutoEncoder(config=config)
 #### config
 *case write should be considered*
 
-#####h iddenSize
+##### hiddenSize
 + usage:the num units for different layer.
 + type:list(int)
 + the size of the first input layer also **should be included**
