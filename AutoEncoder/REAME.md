@@ -83,7 +83,9 @@ if __name__ == '__main__':
     config['trainData'] = np.array([float(i) for i in range(1000)]).reshape(-1, config['hiddenSize'][0]).tolist() #set the training data:0,1,2,3,4....999
     testSample = AutoEncoder(config=config)
     testSample.learn()
-    print (testSample.getParameter())
+    w,b = testSample.getParameter())
+    print (w['weights1'])
+    print (b['biases1'])
 ```
 
  
