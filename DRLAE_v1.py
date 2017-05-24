@@ -255,7 +255,7 @@ class lmmodel(Agent2):
         if trainfalse:
              
             for k in range(1):
-                print(self.L)
+                
                 super(lmmodel,self).__init__(self.L[2][k], 50, batchsize, 2000)
                     #print(len(self.state))
                 for j in range(epoch):   
@@ -268,34 +268,34 @@ class lmmodel(Agent2):
                     #for i in range(0,len(self.state)-batchsize,batchsize):
                     for i in range(0,len(self.state)-batchsize,240):
                         
-                                trajectory = self.get_trajectory(i)
-                                #trajectory = self.get_trajectory(i,False,True)
-                                action = trajectory["action"]
-                                #print(trajectory["state"])
-                                state = trajectory["state"]
-                                returns = trajectory["reward"]
-                                total.append(np.sum(returns))
-                                print(np.sum(returns))
-                            
+                        trajectory = self.get_trajectory(i)
+                        #trajectory = self.get_trajectory(i,False,True)
+                        action = trajectory["action"]
+                        #print(trajectory["state"])
+                        state = trajectory["state"]
+                        returns = trajectory["reward"]
+                        total.append(np.sum(returns))
+                        print(np.sum(returns))
 
-                                actorResults = self.sess.run([self.actor_train],feed_dict={
-                                    self.states: state,
-                                    self.critic_rewards:returns
-                                })
 
-                                #if (i+1)%batchsize==0:
-                                #    test_trajectory = self.get_trajectory(i)
-                                #    test_action = trajectory["action"]
-                                #    test_returns = trajectory["reward"]
-                                #    
-                                #    print("prediction:")
-                                #    print(np.sum(test_returns))
-                                test_state = self.state[i+self.batchSize:i+self.batchSize+240]
-                                test_action = self.choose_action(test_state)
-                                test_reward = self.get_reward(test_state,test_action)
-                                print("test")
-                                print(np.sum(test_reward))
-                                predition.append(np.sum(test_reward))
+                        actorResults = self.sess.run([self.actor_train],feed_dict={
+                            self.states: state,
+                            self.critic_rewards:returns
+                        })
+
+                        #if (i+1)%batchsize==0:
+                        #    test_trajectory = self.get_trajectory(i)
+                        #    test_action = trajectory["action"]
+                        #    test_returns = trajectory["reward"]
+                        #
+                        #    print("prediction:")
+                        #    print(np.sum(test_returns))
+                        test_state = self.state[i+self.batchSize:i+self.batchSize+240]
+                        test_action = self.choose_action(test_state)
+                        test_reward = self.get_reward(test_state,test_action)
+                        print("test")
+                        print(np.sum(test_reward))
+                        predition.append(np.sum(test_reward))
 
                                 
 
@@ -356,13 +356,14 @@ def get_config():
 
 
 def main():
-    os.chdir("/home/swy/code/DRL/autoencoder_models/data")
+    os.chdir("/home/jack/Documents/Project/DRL/data")
     L=[]
-    for files in os.walk("/home/swy/code/DRL/autoencoder_models/data"):
+    for files in os.walk("/home/jack/Documents/Project/DRL/data"):
         for file in files:
-            L.append(file) 
+            L.append(file)
 
 
+    print(L)
     #if tf.gfile.Exists('/home/swy/code/DRL/tbencoder'):
     #    tf.gfile.DeleteRecursively('/home/swy/code/DRL/tbencoder')
     #tf.gfile.MakeDirs('/home/swy/code/DRL/tbencoder')
