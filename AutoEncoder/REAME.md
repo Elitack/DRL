@@ -9,9 +9,11 @@ Provide the AutoEncoder funcition for the given dataset.
 from AutoEncoder.autoencoder import AutoEncoder
 
 ### Initialize
+```python
 test = AutoEncoder(config=config)
+```
 
-####c onfig
+#### config
 *case write should be considered*
 
 #####h iddenSize
