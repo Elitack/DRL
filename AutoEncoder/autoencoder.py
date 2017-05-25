@@ -92,7 +92,7 @@ class AutoEncoder(object):
 if __name__ == '__main__':
     config = {}
     config['hiddenSize'] = [1, 10, 7]
-    config['trainData'] = np.array([float(i) for i in range(1000)]).reshape(-1, config['hiddenSize'][0]).tolist()
+    config['trainData'] = np.array([float(i) for i in range(1000)]).reshape(-1, config['hiddenSize'][0]).tolist() #train data initialize
     testSample = AutoEncoder(config=config)
     testSample.learn()
     print (testSample.getParameter())
