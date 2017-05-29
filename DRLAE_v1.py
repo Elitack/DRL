@@ -276,9 +276,9 @@ def get_config():
 
 
 def main():
-    os.chdir("C:/Users/Public.dclab-PC/Desktop/0527/Info1/Info/data")
+    os.chdir("/home/jack/Documents/Project/DRL/Info1/Info/data")
     L=[]
-    for files in os.walk("C:/Users/Public.dclab-PC/Desktop/0527/Info1/Info/data"):
+    for files in os.walk("/home/jack/Documents/Project/DRL/Info1/Info/data"):
         for file in files:
             L.append(file) 
 
@@ -294,10 +294,10 @@ def main():
         out = lmmodel(config=config,sess=sess,FileList=L)
         sess.run(tf.global_variables_initializer())
         out.learn()
-        save_path = out.saver.save(sess, 'C:/Users/Public.dclab-PC/Desktop/0527/model.ckpt')
+        save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/model.ckpt')
     else:
         out = lmmodel(config=config,sess=sess,FileList=L)
-        load_path = out.saver.restore(sess,'C:/Users/Public.dclab-PC/Desktop/0527/model.ckpt')
+        load_path = out.saver.restore(sess,'/home/jack/Documents/Project/DRL/model.ckpt')
         out.learn()
 
 
