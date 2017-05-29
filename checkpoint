@@ -1,2 +1,2 @@
-model_checkpoint_path: "C:/Users/Public.dclab-PC/Desktop/0527/model.ckpt"
-all_model_checkpoint_paths: "C:/Users/Public.dclab-PC/Desktop/0527/model.ckpt"
+model_checkpoint_path: "/home/jack/Documents/Project/DRL/model.ckpt"
+all_model_checkpoint_paths: "/home/jack/Documents/Project/DRL/model.ckpt"

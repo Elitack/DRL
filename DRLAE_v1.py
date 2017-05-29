@@ -201,12 +201,12 @@ class lmmodel(Agent2):
                 
                 for k in range(1):
                 #print("k:"+str(k))
-                    stockList = ['IF1601.CFE.csv', 'IF1602.CFE.csv', 'IF1603.CFE.csv','IF1604.CFE.csv', 'IF1605.CFE.csv', 'IF1606.CFE.csv', 'IF1607.CFE.csv', 'IF1608.CFE.csv', 'IF1609.CFE.csv', 'IF1610.CFE.csv', 'IF1611.CFE.csv', 'IF1612.CFE.csv','IF1701.CFE.csv', 'IF1702.CFE.csv', 'IF1703.CFE.csv']
+                    stockList = ['IF1601.CFE.csv']
                     super(lmmodel,self).__init__(stockList[k], 50, batchsize, 2000)
             
                         #每次滑动5000，训练窗口大小为15000,TEST 为顺延的5000，batchsize大小设置为5000
                         #for i in range(0,len(self.state)-batchsize,batchsize):
-                    for i in range(0,len(self.state)-batchsize,240):
+                    for i in range(0, len(self.state)-batchsize, 240):
 
                                 trajectory = self.get_trajectory(i)
                                 action = trajectory["action"]
@@ -222,15 +222,17 @@ class lmmodel(Agent2):
                                 rewards = trajectory["reward"]
                                 returns0 =self.discount_and_normalize_rewards(rewards,0.95)
                                 returns = np.reshape(returns0,[-1])
-                                print(np.sum(rewards))
 
 
                                 if np.sum(rewards)>0:
                                     win = win +1
                                 sum = sum +1
                                 total.append(np.sum(rewards))
-
-                                argAction,probs,logits = self.sess.run([self.argAction ,self.probs,self.outputs],feed_dict={
+                                print ("i:"+str(i))
+                                print ("state:"+str(state))
+                                print ("returns:"+str(returns))
+                                print ("actions:"+str(actions))
+                                argAction,probs,logits = self.sess.run([self.argAction, self.probs, self.outputs],feed_dict={
                                     self.states: state,
                                     self.critic_rewards:returns,
                                     self.actions_taken:actions
@@ -245,7 +247,7 @@ class lmmodel(Agent2):
                                     self.critic_rewards:returns,
                                     self.actions_taken:actions
                                 })
-                               
+
                                 
                                
                            
