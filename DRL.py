@@ -220,9 +220,9 @@ class lmmodel(Agent):
 
 
 def main():
-    os.chdir("/home/swy/code/DRL/Info1/Info/data")
+    os.chdir("//home/jack/Documents/Project/DRL/Info1/Info/data")
     L=[]
-    for files in os.walk("/home/swy/code/DRL/Info1/Info/data"):
+    for files in os.walk("/home/jack/Documents/Project/DRL/Info1/Info/data"):
         for file in files:
             L.append(file) 
 
@@ -237,10 +237,10 @@ def main():
         out = lmmodel(sess=sess,FileList=L)
         sess.run(tf.global_variables_initializer())
         out.learn()
-        save_path = out.saver.save(sess, '/home/swy/code/DRL/cpencoder/model0601.ckpt')
+        save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
     else:
         out = lmmodel(sess=sess,FileList=L)
-        load_path = out.saver.restore(sess,'/home/swy/code/DRL/cpencoder/model0601.ckpt')
+        load_path = out.saver.restore(sess,'/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
         out.learn()
 
 
