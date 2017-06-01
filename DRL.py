@@ -50,7 +50,7 @@ class lmmodel(Agent):
                 inputs=self.states,
                 num_outputs=self.hiddenSize, #hidden
                 activation_fn=tf.nn.relu,
-                weights_initializer=tf.truncated_normal_initializer(stddev=1.0),1
+                weights_initializer=tf.truncated_normal_initializer(stddev=1.0),
                 biases_initializer=tf.zeros_initializer()
             )
             self.L1 = L1 = tf.contrib.layers.fully_connected(
