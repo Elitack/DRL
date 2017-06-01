@@ -14,10 +14,10 @@ class Agent(object):
         #self.timeStep = timeStep
         
         #跳过第一行
-        f_matrix = np.loadtxt(open(fileName,'rb'),delimiter=',',skiprows=1)
+        f_matrix = np.loadtxt(open(fileName,'rb'),delimiter=',', skiprows=1)
         
         #价差，涨跌
-        self.diff = f_matrix[:,7]
+        self.diff = f_matrix[:, 7]
        
         self.state=[]
         for i in range(len(self.diff)):

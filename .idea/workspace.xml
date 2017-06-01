@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b406a15-251b-4596-8c55-de5894a0002b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Agent.py" afterPath="$PROJECT_DIR$/Agent.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DRL.py" afterPath="$PROJECT_DIR$/DRL.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +19,7 @@
     <SUITE FILE_PATH="coverage/DRL$lmRL_v1.coverage" NAME="lmRL_v1 Coverage Results" MODIFIED="1493366558413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$test4_lmRL_3.coverage" NAME="test4_lmRL_3 Coverage Results" MODIFIED="1493177797851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$autoencoder.coverage" NAME="autoencoder Coverage Results" MODIFIED="1495629343462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/AutoEncoder" />
-    <SUITE FILE_PATH="coverage/DRL$DRL.coverage" NAME="DRL Coverage Results" MODIFIED="1496295724221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DRL$DRL.coverage" NAME="DRL Coverage Results" MODIFIED="1496306894128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$lmRL_51.coverage" NAME="lmRL_51 Coverage Results" MODIFIED="1493707123797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DRL$DRLAE.coverage" NAME="DRLAE Coverage Results" MODIFIED="1495093325486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -30,9 +32,11 @@
       <file leaf-file-name="Agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="198">
+              <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,9 +44,11 @@
       <file leaf-file-name="DRL.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DRL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1165">
-              <caret line="224" column="58" lean-forward="false" selection-start-line="224" selection-start-column="58" selection-end-line="224" selection-end-column="58" />
-              <folding />
+            <state relative-caret-position="-594">
+              <caret line="117" column="11" lean-forward="true" selection-start-line="117" selection-start-column="11" selection-end-line="117" selection-end-column="11" />
+              <folding>
+                <element signature="e#2#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,6 +72,10 @@
       <find>trajecNum</find>
       <find>config</find>
       <find>print</find>
+      <find>discount_rewards</find>
+      <find>policy</find>
+      <find>policy_rew</find>
+      <find>value_rew</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -83,6 +93,7 @@
         <option value="$PROJECT_DIR$/Agent_v2.py" />
         <option value="$PROJECT_DIR$/AutoEncoder/autoencoder.py" />
         <option value="$PROJECT_DIR$/DRLAE_v1.py" />
+        <option value="$PROJECT_DIR$/Agent.py" />
         <option value="$PROJECT_DIR$/DRL.py" />
       </list>
     </option>
@@ -633,7 +644,7 @@
         <state relative-caret-position="126">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -793,16 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AutoEncoder/autoencoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="88" column="41" lean-forward="false" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/gen_array_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -819,19 +820,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AutoEncoder/autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="88" column="41" lean-forward="false" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="198">
+          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DRL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1165">
-          <caret line="224" column="58" lean-forward="false" selection-start-line="224" selection-start-column="58" selection-end-line="224" selection-end-column="58" />
-          <folding />
+        <state relative-caret-position="-594">
+          <caret line="117" column="11" lean-forward="true" selection-start-line="117" selection-start-column="11" selection-end-line="117" selection-end-column="11" />
+          <folding>
+            <element signature="e#2#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
