@@ -13,54 +13,66 @@ import sys
 import numpy as np
 import os
 
-
+from AutoEncoder.autoencoder import AutoEncoder
 
 
 class lmmodel(Agent):
 
     def __init__(self,sess,FileList):
-        #super(lmmodel,self).__init__('data/IF1602.CFE.csv', 10, 240, 2000)
+        super(lmmodel, self).__init__('/home/jack/Documents/Project/DRL/Info1/Info/data/IF1601.CFE.csv', 20)
+
+        self.inputSize=7  #2features
+        self.stepNum=20   #20 price sequence
+        self.hiddenSize=100 # fully connected outputs
+        self.neuronNum=100
+
 
         self.L=FileList
         self.sess =sess
-        self.inputSize=7  #2features
-        self.stepNum=20   #20 price sequence
-        self.hiddenSize=128 # fully connected outputs
-        self.neuronNum=100
+
         self.buildNetwork()
+
         self.saver = tf.train.Saver(tf.global_variables())
-    
+
     #input states sequence, generate the action vector by policy Network
     def choose_action(self, state):  
         """Choose an action."""
-        return self.sess.run(self.argAction, feed_dict={self.states: state})
+        state = np.reshape(state, [-1, self.inputSize])
+        context = {}
+        context.update(self.paraDict)
+        context.update({self.stateTrain:state})
+        return self.sess.run(self.argAction, feed_dict=context)
+
+    def enterParameter(self, fullyConnected):
+        self.weights_dict = fullyConnected[0]
+        self.biases_dict = fullyConnected[1]
+        self.paraDict={self.weights1:self.weights_dict['weights1'], self.weights2: self.weights_dict['weights2'], self.biases1: self.biases_dict['biases1'],
+                    self.biases2: self.biases_dict['biases2']}
 
     # build the policy Network and value Network
     def buildNetwork(self):
-        self.states = tf.placeholder(tf.float32,shape=[None, self.stepNum, self.inputSize],name= "states")
+        self.stateTrain = tf.placeholder(tf.float32,shape=[None, self.inputSize],name= "stateTrain")
         self.critic_rewards = tf.placeholder(tf.float32,shape=[None],name= "critic_rewards")
 
         self.new_lr = tf.placeholder(tf.float32,shape=[],name="learning_rate")
-        self.lr = tf.Variable(0.1,trainable=False)
+        self.lr = tf.Variable(0.1, trainable=False)
 
         # PolicyNetwork
+
+
         with tf.variable_scope("Policy") :
 
-            self.L0 = L0 = tf.contrib.layers.fully_connected(
-                inputs=self.states,
-                num_outputs=self.hiddenSize, #hidden
-                activation_fn=tf.nn.relu,
-                weights_initializer=tf.truncated_normal_initializer(stddev=1.0),
-                biases_initializer=tf.zeros_initializer()
-            )
-            self.L1 = L1 = tf.contrib.layers.fully_connected(
-                inputs=L0,
-                num_outputs=self.hiddenSize, #hidden
-                activation_fn=tf.nn.relu,
-                weights_initializer=tf.truncated_normal_initializer(stddev=1.0),
-                biases_initializer=tf.zeros_initializer()
-            )
+            self.weights1 = tf.placeholder(tf.float32, shape = [self.inputSize, self.hiddenSize], name = "weights1")
+            self.biases1 = tf.placeholder(tf.float32, shape = [self.hiddenSize], name = "biases1")
+            self.weights2 = tf.placeholder(tf.float32, shape=[self.hiddenSize, self.hiddenSize], name="weights2")
+            self.biases2 = tf.placeholder(tf.float32, shape=[self.hiddenSize], name="biases2")
 
+            activation = tf.nn.elu
+
+            L0 = activation(tf.matmul(self.stateTrain, self.weights1)+self.biases1)
+            L1 = activation(tf.matmul(L0, self.weights2)+self.biases2)
+
+            L1 = tf.reshape(L1, [-1, self.stepNum, self.hiddenSize])
             #construct a lstmcell ,the size is neuronNum
             cell = tf.contrib.rnn.BasicLSTMCell(self.neuronNum, forget_bias=1.0, state_is_tuple=True)
             #cell =tf.contrib.rnn.DropoutWrapper(lstmcell, output_keep_prob=0.5)
@@ -68,10 +80,11 @@ class lmmodel(Agent):
             #cell_drop=tf.contrib.rnn.DropoutWrapper(lstmcell, output_keep_prob=0.5)
             #construct 5 layers of LSTM
             #cell = tf.contrib.rnn.MultiRNNCell([cell_drop for _ in range(2)], state_is_tuple=True)
-           
-            
+
+
             #系统下一时刻的状态仅由当前时刻的状态产生
-            outputnew,statenew = tf.nn.dynamic_rnn(cell,L1,dtype=tf.float32)
+            outputnew, statenew = tf.nn.dynamic_rnn(cell, L1, dtype=tf.float32)
+
             outputs = self.outputs = outputnew[:,self.stepNum-1,:] # 取最后一个step的结果
             
             #outputs= tf.contrib.layers.fully_connected(
@@ -98,7 +111,6 @@ class lmmodel(Agent):
             self.policyloss = policyloss = tf.log(self.action0)*self.critic_rewards
             loss = tf.negative(tf.reduce_sum(policyloss),name="loss")
             #loss = tf.negative(policyloss,name="loss")
-            self.actor_train = tf.train.AdamOptimizer(self.lr).minimize(loss)
             #tf.summary.scalar('actor_loss',tf.abs(loss))
             #self.actor_train = tf.train.AdamOptimizer(self.lr).minimize(loss)
             tvars = tf.trainable_variables() #得到可以训练的参数
@@ -154,85 +166,81 @@ class lmmodel(Agent):
         max_epoch=2
         learningrate = 0.1
 
-        trainfalse =True
-        if trainfalse:
             
-            for j in range(epoch):  
-                total=[] 
-                sum = 0
-                win = 0
-                predition = []
+        for j in range(epoch):
+            total=[]
+            sum = 0
+            win = 0
+            lr_decay = 0.5**max(j+1 - max_epoch,0.0)
 
-                lr_decay = 0.5**max(j+1 - max_epoch,0.0)
-                #self.assign_lr(self.sess,learningrate*lr_decay)
 
-                stockList = ['IF1601.CFE.csv', 'IF1602.CFE.csv', 'IF1603.CFE.csv','IF1604.CFE.csv', 'IF1605.CFE.csv', 'IF1606.CFE.csv', 'IF1607.CFE.csv', 'IF1608.CFE.csv', 'IF1609.CFE.csv', 'IF1610.CFE.csv', 'IF1611.CFE.csv', 'IF1612.CFE.csv','IF1701.CFE.csv', 'IF1702.CFE.csv', 'IF1703.CFE.csv']
-                super(lmmodel,self).__init__(stockList[k])
+            #每次滑动5000，训练窗口大小为15000,TEST 为顺延的5000，batchsize大小设置为5000
+            #for i in range(0,len(self.state)-batchsize,batchsize):
 
-                #每次滑动5000，训练窗口大小为15000,TEST 为顺延的5000，batchsize大小设置为5000
-                #for i in range(0,len(self.state)-batchsize,batchsize):
-                for i in range(0,len(self.state)-batchsize-timestep,240+timestep):
+            for i in range(0,len(self.state)-batchsize-timestep,240+timestep):
 
-                    trajectory = self.get_trajectory(i, timestep, batchsize)
-                    state = trajectory["state"]
-                    #returns = self.discount_rewards(trajectory["reward"],0.95)
-                    returns =trajectory["reward"]
-                    action = trajectory["action"]
-                    # print(action)
+                trajectory = self.get_trajectory(i, batchsize)
+                state = trajectory["state"]
+                #returns = self.discount_rewards(trajectory["reward"],0.95)
+                returns =trajectory["reward"]
+                action = trajectory["action"]
 
-                    # sharp rate
-                    rmean = np.mean(returns)
-                    rvariance = np.std(returns)
-                    #print(rmean/rvariance)
-                    #统计收益大于0的周数
-                    if np.sum(returns)>0:
-                        win = win +1
-                    sum = sum +1
-                    total.append(np.sum(returns))
-                    #print(np.sum(returns))
+                #统计收益大于0的周数
+                if np.sum(returns)>0:
+                    win = win +1
+                sum = sum +1
+                total.append(np.sum(returns))
+                state = np.reshape(state, [-1, self.inputSize])
+                probs, loss = self.sess.run([self.probs, self.policyloss],feed_dict={
+                    self.stateTrain: state,
+                    self.critic_rewards:returns,
+                    self.weights1:self.weights_dict['weights1'],
+                    self.weights2: self.weights_dict['weights2'],
+                    self.biases1: self.biases_dict['biases1'],
+                    self.biases2: self.biases_dict['biases2'],
 
-                    print("state" + str(state[0:11]))
-                    print("rewards" + str(returns))
-                    probs, loss = self.sess.run([self.probs, self.policyloss],feed_dict={
-                        self.states: state,
-                        self.critic_rewards:returns
-                    })
+                })
+                print (probs)
+                print (loss)
+                actorResults,loss, agrads= self.sess.run([self.actor_train, self.policyloss, self.agrads],feed_dict={
+                    self.stateTrain: state,
+                    self.critic_rewards:returns,
+                    self.weights1: self.weights_dict['weights1'],
+                    self.weights2: self.weights_dict['weights2'],
+                    self.biases1: self.biases_dict['biases1'],
+                    self.biases2: self.biases_dict['biases2'],
+                })
+                        #print(np.sum(loss))
 
-                    print("probs"+str(probs))
-                    print("loss"+str(loss))
-                    actorResults,loss= self.sess.run([self.actor_train, self.policyloss],feed_dict={
-                        self.states: state,
-                        self.critic_rewards:returns
-                    })
-                            #print(np.sum(loss))
- 
-                            
 
-                plt.figure()
-                x_values = range(len(total))
-                y_values = total
-                plt.plot(x_values, y_values)
-                plt.savefig(str(j)+'.png')
-                    
-        #self.writer.close()
+
+            plt.figure()
+            x_values = range(len(total))
+            y_values = total
+            plt.plot(x_values, y_values)
+            plt.savefig(str(j)+'.png')
+
+    #self.writer.close()
 
 
 def main():
-    os.chdir("//home/jack/Documents/Project/DRL/Info1/Info/data")
+    os.chdir("/home/jack/Documents/Project/DRL/Info1/Info/data")
     L=[]
     for files in os.walk("/home/jack/Documents/Project/DRL/Info1/Info/data"):
         for file in files:
             L.append(file) 
 
 
-    #if tf.gfile.Exists('/home/swy/code/DRL/tbencoder'):
-    #    tf.gfile.DeleteRecursively('/home/swy/code/DRL/tbencoder')
-    #tf.gfile.MakeDirs('/home/swy/code/DRL/tbencoder')
-
     sess= tf.InteractiveSession()
     trainable= True
     if trainable:
         out = lmmodel(sess=sess,FileList=L)
+        config = {}
+        config['hiddenSize'] = [7, 100, 100]
+        AETrain = AutoEncoder(config=config)
+        AETrain.getTrainData(out.getData())
+        AETrain.learn()
+        out.enterParameter(AETrain.getParameter())
         sess.run(tf.global_variables_initializer())
         out.learn()
         save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')

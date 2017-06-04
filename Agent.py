@@ -12,7 +12,7 @@ class Agent(object):
         # -----------------------------------data initial--------------------------------
         self.action_space = [-1, 0, 1]
         self.timeStep = timeStep
-        self.f_matrix = np.loadtxt(str(open(fileName,'rb')), delimiter=',', skiprows=9)
+        self.f_matrix = np.loadtxt(open(fileName,'rb'), delimiter=',', skiprows=9)
         #价差，涨跌
         self.diff = self.f_matrix[:, 7]
         # ---------------------------------data transform--------------------------------
@@ -22,13 +22,15 @@ class Agent(object):
             self.state.append(state)
 
         self.data = []
-        for i in range(len(self.f_matrix)):
+        for i in range(len(self.f_matrix)-timeStep):
             rowTmp = []
             for j in range(timeStep):
                 rowTmp.append(self.state[i+j])
             self.data.append(rowTmp)
-        self.state2D = np.reshape(self.state, [-1, 7])
+        self.state2D = np.reshape(self.data, [-1, 7])
 
+    def getData(self):
+        return self.state2D
 
     def get_trajectory(self, index, batchSize):
         # ---------------state Get--------------------
