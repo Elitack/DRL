@@ -191,25 +191,16 @@ class lmmodel(Agent):
                 sum = sum +1
                 total.append(np.sum(returns))
                 state = np.reshape(state, [-1, self.inputSize])
-                probs, loss = self.sess.run([self.probs, self.policyloss],feed_dict={
-                    self.stateTrain: state,
-                    self.critic_rewards:returns,
-                    self.weights1:self.weights_dict['weights1'],
-                    self.weights2: self.weights_dict['weights2'],
-                    self.biases1: self.biases_dict['biases1'],
-                    self.biases2: self.biases_dict['biases2'],
 
-                })
+
+                context = {}
+                context.update(self.paraDict)
+                context.update({self.stateTrain: state})
+                context.update({self.critic_rewards:returns})
+                probs, loss = self.sess.run([self.probs, self.policyloss],feed_dict=context)
                 print (probs)
                 print (loss)
-                actorResults,loss, agrads= self.sess.run([self.actor_train, self.policyloss, self.agrads],feed_dict={
-                    self.stateTrain: state,
-                    self.critic_rewards:returns,
-                    self.weights1: self.weights_dict['weights1'],
-                    self.weights2: self.weights_dict['weights2'],
-                    self.biases1: self.biases_dict['biases1'],
-                    self.biases2: self.biases_dict['biases2'],
-                })
+                actorResults,loss= self.sess.run([self.actor_train, self.policyloss],feed_dict=context)
                         #print(np.sum(loss))
 
 
@@ -232,22 +223,18 @@ def main():
 
 
     sess= tf.InteractiveSession()
-    trainable= True
-    if trainable:
-        out = lmmodel(sess=sess,FileList=L)
-        config = {}
-        config['hiddenSize'] = [7, 100, 100]
-        AETrain = AutoEncoder(config=config)
-        AETrain.getTrainData(out.getData())
-        AETrain.learn()
-        out.enterParameter(AETrain.getParameter())
-        sess.run(tf.global_variables_initializer())
-        out.learn()
-        save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
-    else:
-        out = lmmodel(sess=sess,FileList=L)
-        load_path = out.saver.restore(sess,'/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
-        out.learn()
+
+    out = lmmodel(sess=sess,FileList=L)
+    config = {}
+    config['hiddenSize'] = [7, 100, 100]
+    AETrain = AutoEncoder(config=config)
+    AETrain.getTrainData(out.getData())
+    AETrain.learn()
+    out.enterParameter(AETrain.getParameter())
+    sess.run(tf.global_variables_initializer())
+    out.learn()
+    save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
+
 
 
 if __name__ == '__main__':
