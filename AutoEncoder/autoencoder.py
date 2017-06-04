@@ -5,7 +5,6 @@ import tensorflow as tf
 class AutoEncoder(object):
     def __init__(self, config):
         #force needed
-        self.trainData = config['trainData']
         self.hiddenSize = config['hiddenSize']
         self.layerNum = len(self.hiddenSize) - 1
         #optional needed
@@ -43,6 +42,8 @@ class AutoEncoder(object):
         self.weights_dict = {}
         self.biases_dict = {}
 
+    def getTrainData(self, trainData):
+        self.trainData = trainData
 
     def learn(self):
         for i in range(self.layerNum):
@@ -92,7 +93,8 @@ class AutoEncoder(object):
 if __name__ == '__main__':
     config = {}
     config['hiddenSize'] = [1, 10, 7]
-    config['trainData'] = np.array([float(i) for i in range(1000)]).reshape(-1, config['hiddenSize'][0]).tolist() #train data initialize
+    trainData= np.array([float(i) for i in range(1000)]).reshape(-1, config['hiddenSize'][0]).tolist() #train data initialize
     testSample = AutoEncoder(config=config)
+    testSample.getTrainData(trainData)
     testSample.learn()
     print (testSample.getParameter())
