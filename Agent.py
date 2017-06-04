@@ -8,58 +8,42 @@ import matplotlib.pyplot as plt
 
 class Agent(object):
 
-    def __init__(self, fileName):
+    def __init__(self, fileName, timeStep):
+        # -----------------------------------data initial--------------------------------
         self.action_space = [-1, 0, 1]
-        #self.batchSize = batchSize
-        #self.timeStep = timeStep
-        
-        #跳过第一行
-        f_matrix = np.loadtxt(open(fileName,'rb'),delimiter=',', skiprows=1)
-        
+        self.timeStep = timeStep
+        self.f_matrix = np.loadtxt(open(fileName,'rb'),delimiter=',', skiprows=9)
         #价差，涨跌
-        self.diff = f_matrix[:, 7]
-       
+        self.diff = self.f_matrix[:, 7]
+        # ---------------------------------data transform--------------------------------
         self.state=[]
         for i in range(len(self.diff)):
-            #每个时刻状态由（close，volume）
-            state = f_matrix[i,4:11]
-            #state.append(f_matrix[i,4])
-            #state.append(f_matrix[i,5])
+            state = self.f_matrix[i,4:11]
             self.state.append(state)
 
-    def get_trajectory(self,index,timeStep,batchSize): 
-        batch = []
-        st = index
-        for i in range(batchSize):
-            one = []
+        self.data = []
+        for i in range(len(self.f_matrix)):
+            rowTmp = []
             for j in range(timeStep):
-                one.append(self.state[st+j])
-            batch.append(one)
-            st = st + 1
-        #batch size = [batchSize,timeStep,2]
-            #if i == 0: #测试state是否正确
-            #    print("state")
-                #print(batch)
-        #print(np.shape(batch))  
-  
-        #！！！当前时刻状态由前timestep状态预测得到！！！
-        action = self.choose_action(batch)
-        action = action - 1
+                rowTmp.append(self.state[i+j])
+            self.data.append(rowTmp)
 
-        #文章中的定义reward
-        #在状态0时刻，不产生reward，但是当产生1，或者-1的时候，会产生手续费
+
+    def get_trajectory(self, index, batchSize):
+        # ---------------state Get--------------------
+        batch = self.data[index:index+batchSize]
+
+        # ---------------action Get-------------------
+        action = self.choose_action(batch)-1
+
+        # ---------------reward Get-------------------
         rewards = []
-        
-        diff = self.diff[index+timeStep:index+timeStep+batchSize] #不包含最后一个
-        #print(diff[0:5]) # 测试diff是否正确
+        diff = self.diff[index+self.timeStep:index+self.timeStep+batchSize] #不包含最后一个
         for i in range(len(action)):
             if i==0:
-
                 rew = - 1* abs(action[i])
-                
             else:
                 rew = action[i-1] * diff[i] - 1* abs(action[i]-action[i-1])
-
             rewards.append(rew)
 
         return {"reward":rewards,
@@ -69,7 +53,7 @@ class Agent(object):
 
     def choose_action(self,state):
         pass
-       # return np.random.randint(-1,2)
+
 
 
   
