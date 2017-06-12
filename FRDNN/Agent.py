@@ -19,16 +19,22 @@ class DataBase(object):
         for i in range(m-1, len(self.price_sequence)):
             self.fv_sequence.append(self.price_sequence[i-m+1:i+1])
 
-    def fuzzyExtension(self):
+    # -------------------def fuzzy extension---------------------------------
         kmeans = KMeans(n_clusters=3).fit(self.fv_sequence)
         cluster = {'0':[], '1':[], '2':[]}
         for i in range(len(self.fv_sequence)):
             cluster[str(kmeans.labels_[i])].append(self.fv_sequence[i])
-        
+        self.means = []
+        self.vars = []
+        for i in range(3):
+            self.means.append(np.mean(cluster[str(i)], axis = 0))
+            self.vars.append(np.var(cluster[str(i)], axis=0))
+        self.fe_sequence = []
+        for i in range(len(self.fv_sequence)):
+            for j in range(3):
+                self.fe_sequence.append(np.exp(-np.square(self.fv_sequence[i]-self.means[j])/self.vars[j]))
 
-class NetWork(object):
-    def __init__(self):
-        self.
+
 
 '''
 
