@@ -109,12 +109,12 @@ class lmmodel(Agent):
             self.lr_update = tf.assign(self.lr,self.new_lr)
             #self.policyloss = policyloss  = tf.log(self.action0)*self.critic_rewards + 0.01 * self.entropy
             self.policyloss = policyloss = tf.log(self.action0)*self.critic_rewards
-            loss = tf.negative(tf.reduce_sum(policyloss),name="loss")
+            self.loss = tf.negative(tf.reduce_sum(policyloss),name="loss")
             #loss = tf.negative(policyloss,name="loss")
             #tf.summary.scalar('actor_loss',tf.abs(loss))
             #self.actor_train = tf.train.AdamOptimizer(self.lr).minimize(loss)
             tvars = tf.trainable_variables() #得到可以训练的参数
-            self.agrads, _ = tf.clip_by_global_norm(tf.gradients(loss, tvars),5)  #防止梯度爆炸
+            self.agrads, _ = tf.clip_by_global_norm(tf.gradients(self.loss, tvars),5)  #防止梯度爆炸
             optimizer = tf.train.AdamOptimizer(self.lr)
             self.actor_train = optimizer.apply_gradients(zip(self.agrads, tvars))
     
@@ -200,9 +200,8 @@ class lmmodel(Agent):
                 probs, loss = self.sess.run([self.probs, self.policyloss],feed_dict=context)
                 print (probs)
                 print (loss)
-                actorResults,loss= self.sess.run([self.actor_train, self.policyloss],feed_dict=context)
+                actorResults,loss= self.sess.run([self.actor_train, self.loss],feed_dict=context)
                         #print(np.sum(loss))
-
 
 
             plt.figure()
@@ -233,7 +232,6 @@ def main():
     out.enterParameter(AETrain.getParameter())
     sess.run(tf.global_variables_initializer())
     out.learn()
-    save_path = out.saver.save(sess, '/home/jack/Documents/Project/DRL/cpencoder/model0601.ckpt')
 
 
 
