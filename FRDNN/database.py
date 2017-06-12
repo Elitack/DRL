@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.cluster import KMeans
+from autoencoder import AutoEncoder
 import matplotlib.pyplot as plt
 """
  m:ft,feature
@@ -12,6 +13,7 @@ class DataBase(object):
         raw_data = np.loadtxt(open(fileName, 'rb'), delimiter=',', skiprows=4)[:, 7]
 
         self.price_sequence = []
+        self.m = m
         for i in range(len(raw_data)-1):
             self.price_sequence.append(raw_data[i+1]-raw_data[i])
 
@@ -19,6 +21,8 @@ class DataBase(object):
         for i in range(m-1, len(self.price_sequence)):
             self.fv_sequence.append(self.price_sequence[i-m+1:i+1])
 
+        self.config = {}
+        self.config['hiddenSize'] = [m*3, 128, 128]
     # -------------------def fuzzy extension---------------------------------
     def FuzzyExtension(self):
         kmeans = KMeans(n_clusters=3).fit(self.fv_sequence)
@@ -34,8 +38,22 @@ class DataBase(object):
         for i in range(len(self.fv_sequence)):
             for j in range(3):
                 self.fe_sequence.append(np.exp(-np.square(self.fv_sequence[i]-self.means[j])/self.vars[j]))
+        self.fe_sequence = np.reshape(self.fe_sequence, [-1, 3*self.m])
+        np.savetxt('FuzzyExtension.csv', self.fe_sequence, delimiter=',')
+
+    # ----------------------def auto encoder extension------------------------
+    def AutoEncoderF(self):
+        AETrain = AutoEncoder(config=self.config)
+        AETrain.getTrainData(self.fe_sequence)
+        AETrain.learn()
+        return AETrain.getParameter()
 
 
+
+if __name__ == '__main__':
+    testSample = DataBase('/home/jack/Documents/Project/DRL/FRDNN/data/IF1601.CFE.csv', 20)
+    testSample.FuzzyExtension()
+    testSample.AutoEncoderF()
 
 '''
 
