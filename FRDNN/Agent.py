@@ -20,6 +20,7 @@ class DataBase(object):
             self.fv_sequence.append(self.price_sequence[i-m+1:i+1])
 
     # -------------------def fuzzy extension---------------------------------
+    def FuzzyExtension(self):
         kmeans = KMeans(n_clusters=3).fit(self.fv_sequence)
         cluster = {'0':[], '1':[], '2':[]}
         for i in range(len(self.fv_sequence)):
